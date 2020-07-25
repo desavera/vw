@@ -37,8 +37,8 @@ initdf.head(5)
 # DATA CLEAN UP
 
 # we will drop the columns having more than 75% NA values.
-#initdf = initdf.drop(initdf.loc[:,list(round(100*(initdf.isnull().sum()/len(initdf.index)), 2)>75)].columns, 1)
-#round(100*(initdf.isnull().sum()/len(initdf.index)), 2)
+initdf = initdf.drop(initdf.loc[:,list(round(100*(initdf.isnull().sum()/len(initdf.index)), 2)>75)].columns, 1)
+round(100*(initdf.isnull().sum()/len(initdf.index)), 2)
 
 # Rest missing values are under 2% so we can drop these rows.
 initdf.dropna(inplace = True)
@@ -47,3 +47,9 @@ initdf.dropna(inplace = True)
 sum(initdf.duplicated(subset ='policyID')) == 0
 
 initdf.to_csv('vwdataset-wrangled.csv',index=False)
+
+a, b, c = np.split(initdf, [int(.2*len(cleandf)), int(.5*len(cleandf))])
+
+a.to_csv('vwdataset-wrangled1.csv',index=False)
+b.to_csv('vwdataset-wrangled2.csv',index=False)
+c.to_csv('vwdataset-wrangled3.csv',index=False)

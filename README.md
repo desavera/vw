@@ -77,4 +77,6 @@ The processing was quite reasonable and the LOCAL SPARK ETL was successfully ran
 
 COUNTYID - TOTAL NUM OF POLICIES - MAX EQ SITE LIMIT VALUE - POLICYID OF MAX
 
-as we trigger 
+as we trigger the Spark app and the aggregations are added on demand depending on each transformation on ENRICHED ZONE and not requiring the SQL join as well as isolated per partition. 
+
+In order to replicate this approach for AWS we would basically follow the proposed architecture on vw/doc blueprint PDFs and expect the same results.
